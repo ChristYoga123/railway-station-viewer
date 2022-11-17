@@ -12,4 +12,9 @@ class Train extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function TrainStation()
+    {
+        return $this->hasMany(TrainStation::class);
+    }
 }

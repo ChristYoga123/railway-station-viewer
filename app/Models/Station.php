@@ -4,40 +4,27 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 class Station extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
-        'email',
-        'password',
+        'user_id'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function StationFacility()
+    {
+        return $this->hasMany(StationFacility::class);
+    }
+
+    public function TrainStation()
+    {
+        return $this->hasMany(TrainStation::class);
+    }
 }
