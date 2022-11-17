@@ -22,4 +22,9 @@ class Station extends Model
     {
         return $this->hasMany(StationFacility::class);
     }
+
+    public function TrainStation()
+    {
+        return $this->hasMany(TrainStation::class);
+    }
 }
