@@ -15,4 +15,9 @@ class StationFacility extends Model
         'image', 
         'description'
     ];
+
+    public function Station()
+    {
+        return $this->belongsTo(StationFacility::class);
+    }
 }

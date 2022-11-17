@@ -17,4 +17,9 @@ class Station extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function StationFacility()
+    {
+        return $this->hasMany(StationFacility::class);
+    }
 }
