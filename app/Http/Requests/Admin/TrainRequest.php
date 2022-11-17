@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
-class StationRequest extends FormRequest
+class TrainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class StationRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check() && Auth::user()->role_id == 2;
+        return Auth::check();
     }
 
     /**
@@ -25,10 +25,7 @@ class StationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:stations',
-            'password' => 'required|string|min:8',
-            'role_id' => 'integer'
+            'name' => 'required|string'
         ];
     }
 }
