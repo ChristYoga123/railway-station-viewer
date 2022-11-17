@@ -63,9 +63,11 @@ class TrainController extends Controller
      * @param  \App\Models\Train  $train
      * @return \Illuminate\Http\Response
      */
-    public function edit(Train $train, TrainRequest $request)
+    public function edit(Train $train)
     {
-        return view('pages.Admin.trains.edit');
+        return view('pages.Admin.trains.edit', [
+            'train' => $train
+        ]);
     }
 
     /**
