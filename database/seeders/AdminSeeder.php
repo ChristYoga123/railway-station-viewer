@@ -18,7 +18,8 @@ class AdminSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin DAOP',
             'email' => 'adminkai@gmail.com',
-            'password' => bcrypt('keretaapi')
+            'password' => bcrypt('keretaapi'),
+            'role_id' => 1
         ]);
     }
 }
