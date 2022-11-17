@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\TrainController;
+use App\Http\Controllers\Admin\TrainStationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('train', TrainController::class);
+    Route::resource('train-station', TrainStationController::class);
 
     // Route::middleware(['admin'])->group(function () {
     //     Route::resource()
