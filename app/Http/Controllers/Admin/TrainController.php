@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Train;
 use Illuminate\Http\Request;
-use App\Http\Requests\TrainRequest;
+use App\Http\Requests\Admin\TrainRequest;
 
 class TrainController extends Controller
 {
@@ -16,9 +16,9 @@ class TrainController extends Controller
      */
     public function index()
     {
-        $train = Train::latest()->get();
+        $trains = Train::latest()->get();
 
-        return view('pages.Admin.trains.index');
+        return view('pages.Admin.trains.index', compact('trains'));
     }
 
     /**
@@ -43,7 +43,7 @@ class TrainController extends Controller
 
         Train::create($data);
 
-        return redirect()->route('train.index');
+        return redirect()->route('train.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -96,6 +96,6 @@ class TrainController extends Controller
     {
         $train->delete();
 
-        return redirect()->route('train.index');
+        return redirect()->route('train.index')->with('success', 'Data berhasil dihapus');
     }
 }

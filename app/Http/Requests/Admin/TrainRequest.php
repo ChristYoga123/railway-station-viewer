@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
@@ -25,7 +25,7 @@ class TrainRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:train'
+            'name' => 'required|string|unique:trains'
         ];
     }
 }
