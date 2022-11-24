@@ -35,7 +35,7 @@
                                                 {{ $station->User->name }}
                                             </td>
                                             <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
-                                                <a href="{{ route('station.show', $station) }}" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Detail</a>
+                                                <a href="{{ route('station.show', $station) }}" class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Detail</a>
                                             </td>
                                         </tr>
                                     @endforeach
