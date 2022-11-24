@@ -18,6 +18,6 @@ class StationFacility extends Model
 
     public function Station()
     {
-        return $this->belongsTo(StationFacility::class);
+        return $this->belongsTo(Station::class);
     }
 }
