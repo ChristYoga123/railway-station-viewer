@@ -15,11 +15,24 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
-            'name' => 'Admin DAOP',
-            'email' => 'adminkai@gmail.com',
-            'password' => bcrypt('keretaapi'),
-            'role_id' => 1
-        ]);
+        $admins = [
+            [
+                'name' => 'Admin DAOP',
+                'email' => 'adminkai@gmail.com',
+                'password' => bcrypt('keretaapi'),
+                'role_id' => 1
+            ],
+            [
+                'name' => 'Logawa Admin',
+                'email' => 'adminlogawa@gmail.com',
+                'password' => bcrypt('keretaapi'),
+                'role_id' => 2
+            ]
+        ];
+
+        foreach($admins as $admin)
+        {
+            User::create($admin);
+        }
     }
 }
