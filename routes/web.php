@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\StationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\TrainController;
 use App\Http\Controllers\Admin\TrainStationController;
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('train', TrainController::class);
+    Route::resource('station', StationController::class);
     Route::resource('train-station', TrainStationController::class);
 
     // Route::middleware(['admin'])->group(function () {
