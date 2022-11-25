@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Train;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +15,7 @@ class TrainRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return Auth::check() && Auth::user()->role_id == 1;
     }
 
     /**
@@ -25,7 +26,7 @@ class TrainRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:trains'
+            'name' => 'required|string|unique:trains,name,'.$this->train->id
         ];
     }
 }
