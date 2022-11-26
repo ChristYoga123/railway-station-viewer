@@ -26,7 +26,7 @@ class TrainRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:trains,name,'.$this->train->id
+            'name' => 'required|string|unique:trains,name,'.$this->train
         ];
     }
 }

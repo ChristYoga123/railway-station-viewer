@@ -87,7 +87,7 @@
             <!-- Navigation -->
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-                <li class="items-center">
+                <li class="mx-2">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         <x-slot name="icon">
                             <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
@@ -96,7 +96,7 @@
                     </x-nav-link>
                 </li>
 
-                <li class="items-center">
+                <li class="mx-2">
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         <x-slot name="icon">
                             <i class="fas fa-users mr-2 text-sm opacity-75"></i>
@@ -105,25 +105,25 @@
                     </x-nav-link>
                 </li>
 
-                <li class="items-center">
+                <li class="mx-2">
                     <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
                         <x-slot name="icon">
-                            <i class="fas fa-users mr-2 text-sm opacity-75"></i>
+                            <i class="fas fa-train mr-3 text-sm opacity-75"></i>
                         </x-slot>
                         {{ __('Trains') }}
                     </x-nav-link>
                 </li>
 
-                <li class="items-center">
+                <li class="mx-2">
                     <x-nav-link href="{{ route('station.index') }}" :active="request()->routeIs('station.index')">
                         <x-slot name="icon">
-                            <i class="fas fa-users mr-2 text-sm opacity-75"></i>
+                            <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
                         </x-slot>
                         {{ __('Stations') }}
                     </x-nav-link>
                 </li>
 
-                <li class="items-center">
+                <li class="mx-2">
                     <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
                         <x-slot name="icon">
                             <i class="far fa-address-card mr-2 text-sm opacity-75"></i>
@@ -133,7 +133,7 @@
                 </li>
             </ul>
 
-            <x-divider class="my-4" />
+            {{-- <x-divider class="my-4" />
 
             <x-nav-heading>
                 Two-level menu
@@ -146,7 +146,7 @@
                     </x-slot>
                     Child menu
                 </x-nav-link>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>

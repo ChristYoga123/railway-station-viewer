@@ -64,6 +64,11 @@
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
+                        <div class="pt-2">
+                            <a class="text-sm text-gray-600 hover:text-gray-900 hover:underline" href="{{ route('register') }}">
+                                {{ __('Don\'t have any account? Sign up here') }}
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>

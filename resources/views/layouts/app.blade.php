@@ -27,8 +27,8 @@
             <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
                 <x-dropdown>
                     <x-slot name="trigger">
-                        <a class="block text-slate-500" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
-                            <span class="text-white">{{ Auth::user()->name }}</span>
+                        <a class="md:block text-slate-500 pt-4 px-8 hidden" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
+                            <span class="text-white ">{{ Auth::user()->name }}</span>
                         </a>
                     </x-slot>
                     <x-slot name="content">

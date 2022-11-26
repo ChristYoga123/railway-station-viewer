@@ -1,5 +1,10 @@
 <x-app-layout>
     <div class="w-full px-4">
+        <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8 px-12">
+            <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold" href="{{ route('train.index') }}">Trains</a>
+            </div>
+        </nav>
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
                 <div class="flex flex-wrap items-center">
@@ -11,8 +16,10 @@
                 </div>
             </div>
 
+            <x-divider class="my-4 mx-8" />
+
             @if ($errors->any())
-                <div class="mb-5" role="alert">
+                <div class="mb-5 px-8" role="alert">
                     <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                         There's Something Wrong!
                     </div>
@@ -28,8 +35,8 @@
                 </div>
             @endif
 
-            <div class="block w-full overflow-x-auto">
-                <form action="{{ route('train.update', $train) }}" class="w-full" method="POST" enctype="multipart/form-data">
+            <div class="block w-full overflow-x-auto px-8">
+                <form action="{{ route('train.update', $train->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -50,3 +57,4 @@
         </div>
     </div>
 </x-app-layout>
+
