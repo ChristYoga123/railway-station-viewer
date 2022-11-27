@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\Models\Train;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TrainRequest extends FormRequest
+class UpdateTrainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +25,7 @@ class TrainRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:trains,name'
+            'name' => 'required|string|unique:trains,name,'.$this->train->id.',id'
         ];
     }
 }

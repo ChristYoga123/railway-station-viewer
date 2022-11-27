@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Train;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TrainRequest;
+use App\Http\Requests\Admin\UpdateTrainRequest;
 
 class TrainController extends Controller
 {
@@ -82,7 +83,7 @@ class TrainController extends Controller
      * @param  \App\Models\Train  $train
      * @return \Illuminate\Http\Response
      */
-    public function update(TrainRequest $request, Train $train)
+    public function update(UpdateTrainRequest $request, Train $train)
     {
         $this->authorize('admin');
         $data = $request->all();
