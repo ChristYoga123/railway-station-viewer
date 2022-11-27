@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Station;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Station\StationRequest;
+use App\Http\Requests\Station\UpdateStationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StationController extends Controller
 {
@@ -19,12 +22,17 @@ class StationController extends Controller
     public function create()
     {
         $this->authorize('station');
-        return view('pages.station_facilities.create');
+        return view('pages.stations.create');
     }
 
-    public function store(Request $request)
+    public function store(StationRequest $request)
     {
         $this->authorize('station');
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        Station::create($data);
+
+        return redirect()->route('station.index');
     }
 
     public function show(Station $station)
@@ -42,9 +50,12 @@ class StationController extends Controller
         ]);
     }
 
-    public function update(Request $request, Station $station)
+    public function update(UpdateStationRequest $request, Station $station)
     {
         $this->authorize('station');
+        $data = $request->all();
+        $station->update($data);
+        return redirect()->route('station.index');
     }
 
     public function destroy(Station $station)
