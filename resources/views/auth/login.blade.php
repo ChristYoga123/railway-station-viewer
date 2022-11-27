@@ -65,9 +65,11 @@
                             </a>
                         @endif
                         <div class="pt-2">
+                            Don't have any account?
                             <a class="text-sm text-gray-600 hover:text-gray-900 hover:underline" href="{{ route('register') }}">
-                                {{ __('Don\'t have any account? Sign up here') }}
+                                {{ __('Sign Up') }}
                             </a>
+                            here
                         </div>
                     </div>
                 </form>
