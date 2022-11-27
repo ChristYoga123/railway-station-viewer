@@ -2,7 +2,7 @@
     <div class="w-full px-4">
         <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8 px-12">
             <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-4 px-4">
-                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold" href="{{ route('train.index') }}">Create a New Stations</a>
+                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold" href="{{ route('station.index') }}">Create a New Stations</a>
             </div>
             <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
                 <x-dropdown>

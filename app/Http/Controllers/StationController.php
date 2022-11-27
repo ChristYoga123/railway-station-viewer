@@ -45,7 +45,7 @@ class StationController extends Controller
     public function edit(Station $station)
     {
         $this->authorize('station');
-        return view('pages.station_facilities.edit', [
+        return view('pages.stations.edit', [
             'station' => $station
         ]);
     }
