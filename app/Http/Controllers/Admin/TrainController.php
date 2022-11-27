@@ -28,6 +28,7 @@ class TrainController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         return view('pages.Admin.trains.create');
     }
 
@@ -39,6 +40,8 @@ class TrainController extends Controller
      */
     public function store(TrainRequest $request)
     {
+        $this->authorize('admin');
+
         $data = $request->all();
 
         Train::create($data);
@@ -54,7 +57,7 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
-        //
+        $this->authorize('admin');
     }
 
     /**
@@ -65,6 +68,8 @@ class TrainController extends Controller
      */
     public function edit(Train $train)
     {
+        $this->authorize('admin');
+
         return view('pages.Admin.trains.edit', [
             'train' => $train
         ]);
@@ -79,6 +84,7 @@ class TrainController extends Controller
      */
     public function update(TrainRequest $request, Train $train)
     {
+        $this->authorize('admin');
         $data = $request->all();
 
         $train->update($data);
@@ -94,6 +100,8 @@ class TrainController extends Controller
      */
     public function destroy(Train $train)
     {
+        $this->authorize('admin');
+
         $train->delete();
 
         return redirect()->route('train.index')->with('success', 'Data berhasil dihapus');
