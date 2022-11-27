@@ -19,7 +19,7 @@ class TrainController extends Controller
     {
         $trains = Train::latest()->get();
 
-        return view('pages.Admin.trains.index', compact('trains'));
+        return view('pages.trains.index', compact('trains'));
     }
 
     /**
@@ -30,7 +30,7 @@ class TrainController extends Controller
     public function create()
     {
         $this->authorize('admin');
-        return view('pages.Admin.trains.create');
+        return view('pages.trains.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class TrainController extends Controller
     {
         $this->authorize('admin');
 
-        return view('pages.Admin.trains.edit', [
+        return view('pages.trains.edit', [
             'train' => $train
         ]);
     }

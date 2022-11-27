@@ -17,7 +17,7 @@ class TrainStationController extends Controller
     public function index()
     {
         $train_stations = TrainStation::paginate(10);
-        return view('pages.Admin.train_stations.index', [
+        return view('pages.train_stations.index', [
             'transaction_stations' => $train_stations
         ]);
     }
@@ -29,7 +29,7 @@ class TrainStationController extends Controller
      */
     public function create()
     {
-        return view('pages.Admin.train_stations.create');
+        return view('pages.train_stations.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class TrainStationController extends Controller
      */
     public function show(TrainStation $trainStation)
     {
-        return view('pages.Admin.train_stations.show', [
+        return view('pages.train_stations.show', [
             'train_station' => $trainStation
         ]);
     }
@@ -66,7 +66,7 @@ class TrainStationController extends Controller
      */
     public function edit(TrainStation $trainStation)
     {
-        return view('pages.Admin.train_stations.edit', [
+        return view('pages.train_stations.edit', [
             'train_station' => $trainStation
         ]);
     }

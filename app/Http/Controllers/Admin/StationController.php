@@ -11,14 +11,14 @@ class StationController extends Controller
     public function index()
     {
         $stations = Station::paginate(10);
-        return view('pages.Admin.stations.index', [
+        return view('pages.stations.index', [
             'stations' => $stations
         ]);
     }
 
     public function show(Station $station)
     {
-        return view('pages.Admin.stations.show', [
+        return view('pages.stations.show', [
             'station' => $station
         ]);
     }
