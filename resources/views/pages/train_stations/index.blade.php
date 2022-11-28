@@ -1,54 +1,104 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Train Station') }}
+            {{ __('Train Schedule') }}
         </h2>
     </x-slot>
 
-    <x-slot name="script">
-        <script>
-            // AJAX Datatable
-
-            var datatable = $('#crudTable').DataTable({
-                ajax: {
-                    url: '{!! url()->current() !!}'
-                },
-                columns: [
-                    // { data: 'id', name: 'id', width: '5%' },
-                    { data: 'name', name: 'name' },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        width: '25%'
-                    }
-                ]
-            })
-        </script>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="mb-10">
-                <a href="{{ route('train.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg">
-                    + Create Train
-                </a>
-            </div>
-            <div class="shadow overflow-hidden sm-rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-                    <table id="crudTable">
-                        <thead>
-                            <tr>
-                                {{-- <th>ID</th> --}}
-                                <td>Name</td>
-                                <td>Description</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
+    <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8">
+        <div class="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+            <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('train.index') }}">Train Schedule</a>
+            <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <a class="md:block text-slate-500 pt-4 px-8 hidden" href="#pablo" onclick="openDropdown(event,'user-dropdown')"></a>
+                    </x-slot>
+                    <x-slot name="content">
+                        <x-dropdown-link href="{{ route('profile.show') }}">{{ __('My profile') }}</x-dropdown-link>
+                        <x-divider />
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
             </div>
         </div>
+    </nav>
+    <div class="w-full px-4">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+            @can('stationAdmin')
+                <div class="mb-10 ml-5 mt-8">
+                    <a href="{{ route('train.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                        + Create Schedule
+                    </a>
+                </div>
+            @endcan
+
+            <div class="block w-full overflow-x-auto rounded">
+                <table class="items-center w-full bg-transparent border-collapse">
+                    <thead>
+                    <tr>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                            Kereta
+                        </th>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                            Stasiun
+                        </th>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                            Waktu Kedatangan
+                        </th>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                            Waktu Keterlambatan
+                        </th>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-slate-50 text-slate-500 border-slate-100">
+                            Waktu Tertunda
+                        </th>
+                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold  bg-slate-50 text-slate-500 border-slate-100">
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($trainStations as $trainStation)
+                            <tr>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
+                                    {{ $trainStation->train->name }}
+                                </td>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
+                                    {{ $trainStation->station->name }}
+                                </td>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
+                                    {{ $trainStation->arrival_time }}
+                                </td>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
+                                    {{ $trainStation->late_time }}
+                                </td>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
+                                    {{ $trainStation->delay_time }}
+                                </td>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
+                                    <a href="{{ route('trainStation.show', $stationStation->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
+                                    @can('station')
+                                        <a href="{{ route('trainStation.edit', $trainStation) }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</a>
+                                        <form action="{{ route('trainStation.destroy', $trainStation->id) }}" method="post" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>
+                                        </form>
+                                    @endcan
+                                </td>
+                            </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {{-- {{ $trains->links() }} --}}
+
     </div>
 </x-app-layout>

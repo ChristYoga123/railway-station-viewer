@@ -16,9 +16,9 @@ class TrainStationController extends Controller
      */
     public function index()
     {
-        $train_stations = TrainStation::paginate(10);
+        $trainStations = TrainStation::paginate(10);
         return view('pages.train_stations.index', [
-            'transaction_stations' => $train_stations
+            'trainStations' => $trainStations
         ]);
     }
 
@@ -42,7 +42,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         TrainStation::create($data);
-        return redirect()->route('train-station.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -54,7 +54,7 @@ class TrainStationController extends Controller
     public function show(TrainStation $trainStation)
     {
         return view('pages.train_stations.show', [
-            'train_station' => $trainStation
+            'trainStation' => $trainStation
         ]);
     }
 
@@ -67,7 +67,7 @@ class TrainStationController extends Controller
     public function edit(TrainStation $trainStation)
     {
         return view('pages.train_stations.edit', [
-            'train_station' => $trainStation
+            'trainStation' => $trainStation
         ]);
     }
 
@@ -82,7 +82,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         $trainStation->update($data);
-        return redirect()->route('train-station.index')->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -94,6 +94,6 @@ class TrainStationController extends Controller
     public function destroy(TrainStation $trainStation)
     {
         $trainStation->delete();
-        return redirect()->route('train-station.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil dihapus');
     }
 }

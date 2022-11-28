@@ -15,7 +15,7 @@
             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             href="{{ route('dashboard') }}"
         >
-            Notus JS
+            Railway Station Viewer
         </a>
         <ul class="md:hidden items-center flex flex-wrap list-none">
             <li class="inline-block relative">
@@ -65,7 +65,7 @@
                             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                             href="{{ route('dashboard') }}"
                         >
-                            Notus JS
+                            Railway Station Viewer
                         </a>
                     </div>
                     <div class="w-6/12 flex justify-end">
@@ -104,7 +104,7 @@
                         {{ __('Users') }}
                     </x-nav-link>
                 </li>
-                
+
                     <li class="mx-2">
                         <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
                             <x-slot name="icon">
@@ -124,11 +124,11 @@
                 </li>
 
                 <li class="mx-2">
-                    <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+                    <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('about')">
                         <x-slot name="icon">
-                            <i class="far fa-address-card mr-2 text-sm opacity-75"></i>
+                            <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                         </x-slot>
-                        {{ __('About us') }}
+                        {{ __('Train Schedule') }}
                     </x-nav-link>
                 </li>
             </ul>

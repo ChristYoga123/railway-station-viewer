@@ -3,6 +3,7 @@
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrainStationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +42,5 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::resource('train', TrainController::class);
     Route::resource('station', StationController::class);
+    Route::resource('trainStation', TrainStationController::class);
 });
