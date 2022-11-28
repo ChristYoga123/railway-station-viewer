@@ -81,7 +81,12 @@
             </div>
             <!-- Heading -->
             <x-nav-heading>
-                {{ __('Admin Layout Pages') }}
+                @can ('admin')
+                    {{ __('Admin Layout Pages') }}
+                @endcan
+                @can ('station')
+                    {{ __('Station Layout Pages') }}
+                @endcan
             </x-nav-heading>
 
             <!-- Navigation -->

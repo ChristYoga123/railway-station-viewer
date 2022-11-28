@@ -38,7 +38,7 @@
                 </div>
             @endcan
 
-            <div class="block w-full overflow-x-auto">
+            <div class="block w-full overflow-x-auto rounded">
                 <table class="items-center w-full bg-transparent border-collapse">
                     <thead>
                     <tr>
