@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TrainStationRequest;
+use App\Models\Station;
+use App\Models\Train;
 use App\Models\TrainStation;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,9 @@ class TrainStationController extends Controller
      */
     public function create()
     {
-        return view('pages.train_stations.create');
+        $trains = Train::all();
+        $stations = Station::all();
+        return view('pages.train_stations.create', compact('trains', 'stations'));
     }
 
     /**

@@ -27,7 +27,7 @@
         </nav>
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             <div class="mb-4 ml-8 mt-8">
-                <a href="{{ route('train.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                <a href="{{ route('trainStation.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <i class="fas fa-arrow-left mr-3 text-sm"></i>
                     {{ __('Back to Schedule Dashboard') }}
                 </a>
@@ -59,11 +59,19 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Kereta</label>
-                            <input type="text" value="{{ old('train_id') }}" name="train_id" placeholder="Masukkan opsi kereta api" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="train_id">
+                                @foreach ($trains as $train)
+                                    <option value="{{ $train->id }}">{{ $train->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Stasiun</label>
-                            <input type="text" value="{{ old('station_id') }}" name="station_id" placeholder="Masukkan opsi stasiun" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
+                                @foreach ($stations as $station)
+                                    <option value="{{ $station->id }}">{{ $station->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Waktu Kedatangan</label>
