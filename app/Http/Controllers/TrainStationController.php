@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class TrainStationController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorize('station');
+    }
     /**
      * Display a listing of the resource.
      *
