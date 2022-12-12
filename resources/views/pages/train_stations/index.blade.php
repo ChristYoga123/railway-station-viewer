@@ -7,7 +7,7 @@
 
     <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8">
         <div class="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-            <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('trainStation.index') }}">Train Schedule</a>
+            <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('train-schedule.index') }}">Train Schedule</a>
             <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
                 <x-dropdown>
                     <x-slot name="trigger">
@@ -32,7 +32,7 @@
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             @can('station')
                 <div class="mb-8 ml-5 mt-6">
-                    <a href="{{ route('trainStation.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                    <a href="{{ route('train-schedule.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                         + Create Schedule
                     </a>
                 </div>
@@ -81,10 +81,10 @@
                                     {{ $trainStation->delay_time }}
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    <a href="{{ route('trainStation.show', $trainStation->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
+                                    <a href="{{ route('train-schedule.show', $trainStation->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
                                     @can('station')
-                                        <a href="{{ route('trainStation.edit', $trainStation->id) }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</a>
-                                        <form action="{{ route('trainStation.destroy', $trainStation->id) }}" method="post" class="inline">
+                                        <a href="{{ route('train-schedule.edit', $trainStation->id) }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</a>
+                                        <form action="{{ route('train-schedule.destroy', $trainStation->id) }}" method="post" class="inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>

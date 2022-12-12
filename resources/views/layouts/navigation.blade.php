@@ -127,15 +127,16 @@
                         {{ __('Stations') }}
                     </x-nav-link>
                 </li>
-
-                <li class="mx-2">
+                @can('station')
+                  <li class="mx-2">
                     <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
                         <x-slot name="icon">
                             <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                         </x-slot>
                         {{ __('Train Schedule') }}
                     </x-nav-link>
-                </li>
+                  </li>
+                @endcan
             </ul>
 
             {{-- <x-divider class="my-4" />
