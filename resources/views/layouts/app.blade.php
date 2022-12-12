@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Railway Station Viewer') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -22,8 +22,7 @@
 
     <div class="relative md:ml-64 bg-slate-50">
         <!-- TOP NAV -->
-        <nav
-            class="absolute top-0 left-0 z-10 flex items-center w-full p-4 bg-transparent md:flex-row md:flex-nowrap md:justify-start">
+        <nav class="absolute top-0 left-0 z-10 flex items-center w-full p-4 bg-transparent md:flex-row md:flex-nowrap md:justify-start">
             <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
                 <x-dropdown>
                     <x-slot name="trigger">
@@ -46,7 +45,6 @@
             </div>
         </nav>
         <!-- END TOP NAV -->
-
         @if (Auth::user()->role_id === 1)
             <div class="relative pt-12 pb-32 bg-pink-600 md:pt-32">
                 <div class="w-full px-4 mx-auto md:px-10">
@@ -60,6 +58,7 @@
                 </div>
             </div>
         @endif
+
         <div class="w-full px-4 mx-auto -m-24 md:px-10">
             {{ $slot }}
         </div>
