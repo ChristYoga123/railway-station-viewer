@@ -11,10 +11,6 @@ use Illuminate\Http\Request;
 
 class TrainStationController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorize('station');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +46,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         TrainStation::create($data);
-        return redirect()->route('trainStation.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -90,7 +86,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         $trainStation->update($data);
-        return redirect()->route('trainStation.index')->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -102,6 +98,6 @@ class TrainStationController extends Controller
     public function destroy(TrainStation $trainStation)
     {
         $trainStation->delete();
-        return redirect()->route('trainStation.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil dihapus');
     }
 }

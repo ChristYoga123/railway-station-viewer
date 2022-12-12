@@ -130,7 +130,7 @@
 
                 @can('station')
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('about')">
+                        <x-nav-link href="{{ route('train-schedule.index') }}" :active="request()->routeIs('train-schedule.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                             </x-slot>
