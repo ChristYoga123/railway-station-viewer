@@ -110,14 +110,14 @@
                     </x-nav-link>
                 </li>
 
-                    <li class="mx-2">
-                        <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
-                            <x-slot name="icon">
-                                <i class="fas fa-train mr-3 text-sm opacity-75"></i>
-                            </x-slot>
-                            {{ __('Trains') }}
-                        </x-nav-link>
-                    </li>
+                <li class="mx-2">
+                    <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
+                        <x-slot name="icon">
+                            <i class="fas fa-train mr-3 text-sm opacity-75"></i>
+                        </x-slot>
+                        {{ __('Trains') }}
+                    </x-nav-link>
+                </li>
 
                 <li class="mx-2">
                     <x-nav-link href="{{ route('station.index') }}" :active="request()->routeIs('station.index')">
@@ -129,7 +129,7 @@
                 </li>
 
                 <li class="mx-2">
-                    <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('about')">
+                    <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
                         <x-slot name="icon">
                             <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                         </x-slot>
