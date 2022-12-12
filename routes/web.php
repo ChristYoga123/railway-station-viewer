@@ -43,5 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::resource('train', TrainController::class);
     Route::resource('station', StationController::class);
-    Route::resource('train-schedule', TrainStationController::class);
+    Route::resource('trainStation', TrainStationController::class);
 });

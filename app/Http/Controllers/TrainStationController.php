@@ -33,7 +33,10 @@ class TrainStationController extends Controller
     {
         $trains = Train::all();
         $stations = Station::all();
-        return view('pages.train_stations.create', compact('trains', 'stations'));
+        return view('pages.train_stations.create', [
+            'trains' => $trains,
+            'stations' => $stations
+        ]);
     }
 
     /**
@@ -46,7 +49,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         TrainStation::create($data);
-        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -70,8 +73,12 @@ class TrainStationController extends Controller
      */
     public function edit(TrainStation $trainStation)
     {
+        $trains = Train::all();
+        $stations = Station::all();
         return view('pages.train_stations.edit', [
-            'trainStation' => $trainStation
+            'trainStation' => $trainStation,
+            'trains' => $trains,
+            'stations' => $stations
         ]);
     }
 
@@ -86,7 +93,7 @@ class TrainStationController extends Controller
     {
         $data = $request->all();
         $trainStation->update($data);
-        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil diperbarui');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -98,6 +105,6 @@ class TrainStationController extends Controller
     public function destroy(TrainStation $trainStation)
     {
         $trainStation->delete();
-        return redirect()->route('train-schedule.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('trainStation.index')->with('success', 'Data berhasil dihapus');
     }
 }

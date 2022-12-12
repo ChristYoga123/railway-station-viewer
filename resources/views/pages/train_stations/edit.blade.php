@@ -2,7 +2,7 @@
     <div class="w-full px-4">
         <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8 px-12">
             <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-4 px-4">
-                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold" href="{{ route('train-schedule.index') }}">Edit Train Schedule</a>
+                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold" href="{{ route('trainStation.index') }}">Edit Train Schedule</a>
             </div>
             <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
                 <x-dropdown>
@@ -27,7 +27,7 @@
         </nav>
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             <div class="mb-4 ml-8 mt-8">
-                <a href="{{ route('train-schedule.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                <a href="{{ route('trainStation.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <i class="fas fa-arrow-left mr-3 text-sm"></i>
                     {{ __('Back to Schedule Dashboard') }}
                 </a>
@@ -54,7 +54,7 @@
             @endif
 
             <div class="block w-full overflow-x-auto px-8">
-                <form action="{{ route('train-schedule.update', $trainStation->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('trainStation.update', $trainStation->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -62,9 +62,9 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Kereta</label>
                             <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="train_id">
                                 @foreach ($trains as $train)
-                                @if ($trainStation->train_id)
-                                    <option value="{{ $train->id }}" selected>{{ $train->name }}</option>
-                                @endif
+                                    @if ($trainStation->train_id)
+                                        <option value="{{ $train->id }}">{{ $train->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
@@ -72,23 +72,23 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Stasiun</label>
                             <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
                                 @foreach ($stations as $station)
-                                @if ($trainStation->station_id)
-                                    <option value="{{ $station->id }}" selected>{{ $station->name }}</option>
-                                @endif
+                                    @if ($trainStation->station_id === $station->id)
+                                        <option value="{{ $trainStation->station_id }}" selected>{{ $station->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Waktu Kedatangan</label>
-                            <input type="time" value="{{ old('arrival_time') }}" name="arrival_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <input type="time" value="{{ $trainStation->arrival_time }}" name="arrival_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Waktu Keterlambatan</label>
-                            <input type="time" value="{{ old('late_time') }}" name="late_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <input type="time" value="{{ $trainStation->late_time }}" name="late_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         </div>
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-2">Waktu Tertunda</label>
-                            <input type="time" value="{{ old('delay_time') }}" name="delay_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <input type="time" value="{{ $trainStation->delay_time }}" name="delay_time" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
