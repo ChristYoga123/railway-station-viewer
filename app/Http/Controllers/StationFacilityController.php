@@ -6,6 +6,7 @@ use App\Http\Requests\StationFacilityRequest;
 use App\Models\Station;
 use App\Models\StationFacility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StationFacilityController extends Controller
 {
@@ -97,6 +98,11 @@ class StationFacilityController extends Controller
      */
     public function destroy(StationFacility $stationFacility)
     {
-        //
+        if($stationFacility->image){
+            Storage::delete($stationFacility->image);
+        }
+        $stationFacility->delete();
+
+        return redirect()->route('stationFacility.index')->with('success', 'Data berhasil dihapus');
     }
 }
