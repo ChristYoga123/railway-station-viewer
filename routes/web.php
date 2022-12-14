@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\StationFacilityController;
 use App\Http\Controllers\TrainStationController;
 
 /*
@@ -44,4 +45,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('train', TrainController::class);
     Route::resource('station', StationController::class);
     Route::resource('trainStation', TrainStationController::class);
+    Route::resource('stationFacility', StationFacilityController::class);
 });

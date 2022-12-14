@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="/ckeditor/ckeditor.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -63,7 +64,7 @@
             {{ $slot }}
         </div>
     </div>
-
+    
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script type="text/javascript">
         /* Sidebar - Side navigation menu on mobile/responsive mode */

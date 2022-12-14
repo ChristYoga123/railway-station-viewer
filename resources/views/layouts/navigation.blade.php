@@ -127,7 +127,17 @@
                         {{ __('Stations') }}
                     </x-nav-link>
                 </li>
+                
                 @can('station')
+                <li class="mx-2">
+                    <x-nav-link href="{{ route('stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
+                        <x-slot name="icon">
+                            <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
+                        </x-slot>
+                        {{ __('Facility') }}
+                    </x-nav-link>
+                </li>
+
                   <li class="mx-2">
                     <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
                         <x-slot name="icon">
