@@ -14,10 +14,10 @@ class TrainStationSeeder extends Seeder
      */
     public function run()
     {
-        $trainStation = [
-            [
+        // $trainStation = [
+        //     [
 
-            ]
-        ];
+        //     ]
+        // ];
     }
 }

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             TrainSeeder::class,
             StationSeeder::class,
-            TrainStation::class
+            // TrainStation::class
         ]);
     }
 }
