@@ -66,7 +66,7 @@
                                     {{ $stationFacility->name }}
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
-                                    <img src="storage/facility/{{ $stationFacility->image }}" alt="" width="300px">
+                                    <img src="/storage/{{ $stationFacility->image }}" alt="" width="300px">
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
                                     <a href="{{ route('stationFacility.show', $stationFacility->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
