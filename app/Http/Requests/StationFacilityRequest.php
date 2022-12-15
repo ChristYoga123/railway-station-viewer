@@ -29,7 +29,7 @@ class StationFacilityRequest extends FormRequest
         return [
             'station_id' => 'integer',
             'name' => 'required|string',
-            'image' => 'required|image|max:1028',
+            'image' => 'image|max:1028',
             'description' => 'required'
         ];
     }

@@ -64,10 +64,12 @@
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
                                     {{ $station->User->name }}
                                 </td>
-                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    - Kamar Mandi <br/>
-                                    - Pump <br/>
-                                    - Time Crisis <br/>
+                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-left">
+                                    <ol>
+                                        @foreach ($stationFacility as $stationFacility)
+                                            <li class="list-disc">{{ $stationFacility->name }}</li>
+                                        @endforeach
+                                    </ol>
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
                                     Thomas and his friends

@@ -66,18 +66,16 @@
                                     {{ $stationFacility->name }}
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500">
-                                    <img src="/storage/{{ $stationFacility->image }}" alt="" width="300px">
+                                    <img src="/storage/{{ $stationFacility->image }}" alt="" width="180px">
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    <a href="{{ route('stationFacility.show', $stationFacility->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
-                                    @can('station')
-                                        <a href="{{ route('stationFacility.edit', $stationFacility->id) }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</a>
-                                        <form action="{{ route('stationFacility.destroy', $stationFacility->id) }}" method="post" class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>
-                                        </form>
-                                    @endcan
+                                    <a href="{{ route('stationFacility.show', $stationFacility->id) }}" class="mr-1 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Detail</a>
+                                    <a href="{{ route('stationFacility.edit', $stationFacility->id) }}" class=" mr-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Edit</a>
+                                    <form action="{{ route('stationFacility.destroy', $stationFacility->id) }}" method="post" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                     @endforeach

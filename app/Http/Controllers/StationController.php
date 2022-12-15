@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Station\StationRequest;
 use App\Http\Requests\Station\UpdateStationRequest;
+use App\Models\StationFacility;
 use Illuminate\Support\Facades\Auth;
 
 class StationController extends Controller
@@ -18,7 +19,7 @@ class StationController extends Controller
             'stations' => $stations
         ]);
     }
-    
+
     public function create()
     {
         $this->authorize('station');
@@ -37,8 +38,10 @@ class StationController extends Controller
 
     public function show(Station $station)
     {
+        $stationFacility = StationFacility::all();
         return view('pages.stations.show', [
-            'station' => $station
+            'station' => $station,
+            'stationFacility' => $stationFacility,
         ]);
     }
 

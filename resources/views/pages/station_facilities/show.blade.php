@@ -39,29 +39,36 @@
             </div>
 
             <div class="block w-full overflow-x-auto">
-                <div class="mt-4 ml-6 block">
-                    <h1 class="text-2xl font-bold">
+                <div class="ml-6 block">
+                    <h1 class="text-xl font-semibold mb-2">
                         Stasiun
                     </h1>
-                    <p>{{ $station_facility->Station->name }}</p>
+                    <h2 class="text-lg mb-2"> &rsaquo; {{ $station_facility->Station->name }}</h2>
                 </div>
 
+                <x-divider class="my-4 mx-6" />
+
                 <div class="mt-4 ml-6 block">
-                    <h1 class="text-2xl font-bold">
+                    <h1 class="text-xl font-semibold mb-2">
                         Nama Fasilitas
                     </h1>
-                    <p>{{ $station_facility->name }}</p>
+                    <h2 class="text-lg mb-2"> &rsaquo; {{ $station_facility->name }} </h2>
                 </div>
 
+                <x-divider class="my-4 mx-6" />
+
                 <div class="mt-4 ml-6 block">
-                    <h1 class="text-2xl font-bold">
+                    <h1 class="text-xl font-semibold mb-2">
                         Gambar
                     </h1>
                     <img src="/storage/{{ $station_facility->image }}" width="200px">
                 </div>
 
-                <div class="mt-4 ml-6 block">
-                    <h1 class="text-2xl font-bold">
+                <x-divider class="my-4 mx-6" />
+
+
+                <div class="mt-4 mb-8 mx-6 block">
+                    <h1 class="text-xl font-semibold mb-2">
                         Deskripsi
                     </h1>
                     <p>{!! $station_facility->description !!}</p>

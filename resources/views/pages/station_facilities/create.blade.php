@@ -8,7 +8,7 @@
                 <x-dropdown>
                     <x-slot name="trigger">
                         <a class="md:block text-slate-500 pt-4 px-8 hidden" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
-                            
+
                         </a>
                     </x-slot>
                     <x-slot name="content">
@@ -32,7 +32,7 @@
                     {{ __('Back to Facility Dashboard') }}
                 </a>
             </div>
-            
+
 
             <x-divider class="my-4 mx-8" />
 
@@ -56,37 +56,38 @@
             <div class="block w-full overflow-x-auto px-8">
                 <form action="{{ route('stationFacility.store') }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Kereta</label>
-                        <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
-                            @foreach ($stations as $station)
-                                @if ($station->user_id === Auth::user()->id)
-                                    <option value="{{ $station->id }}" placeholder='Choose the Trains'>{{ $station->name }}</option>  
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Name</label>
+                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-4">Kereta</label>
+                            <select class=" form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
+                                @foreach ($stations as $station)
+                                    @if ($station->user_id === Auth::user()->id)
+                                        <option value="{{ $station->id }}" placeholder='Choose the Trains'>{{ $station->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-4">Name</label>
                             <input type="text" value="{{ old('name') }}" name="name" placeholder="Enter a new Facility name" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         </div>
 
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Image</label>
+                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-4">Image</label>
                             <img src="" class="img-preview block mb-3" width="200px">
-                            <input type="file" value="{{ old('image') }}" name="image" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="image" onchange="previewImage()">
+                            <input required type="file" value="{{ old('image') }}" name="image" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="image" onchange="previewImage()">
                         </div>
 
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Description</label>
+                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-4">Description</label>
                             <textarea name="description" id="ckeditor"></textarea>
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm text-center mr-2 mb-2 py-2 px-4 shadow-lg">
-                                Save New Train
+                                Save New Facility
                             </button>
                         </div>
                     </div>

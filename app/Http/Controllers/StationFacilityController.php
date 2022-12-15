@@ -29,6 +29,8 @@ class StationFacilityController extends Controller
      */
     public function create()
     {
+        $this->authorize('station');
+
         return view('pages.station_facilities.create', [
             'stations' => Station::all()
         ]);
@@ -42,6 +44,8 @@ class StationFacilityController extends Controller
      */
     public function store(StationFacilityRequest $request)
     {
+        $this->authorize('station');
+
         $data = $request->all();
         if($request->file('image')){
             $data["image"] = $request->file('image')->store('facility');
@@ -59,6 +63,8 @@ class StationFacilityController extends Controller
      */
     public function show(StationFacility $stationFacility)
     {
+        $this->authorize('station');
+
         return view('pages.station_facilities.show', [
             'station_facility' => $stationFacility
         ]);
@@ -72,8 +78,13 @@ class StationFacilityController extends Controller
      */
     public function edit(StationFacility $stationFacility)
     {
+        $this->authorize('station');
+
+        $stations = Station::all();
+
         return view('pages.station_facilities.edit', [
-            'station_facility' => $stationFacility
+            'stationFacility' => $stationFacility,
+            'stations' => $stations
         ]);
     }
 
@@ -86,8 +97,19 @@ class StationFacilityController extends Controller
      */
     public function update(StationFacilityRequest $request, StationFacility $stationFacility)
     {
+        $this->authorize('station');
+
         $data = $request->all();
+        if ($request->image) {
+            if ($request->old_image) {
+                Storage::delete($request->old_image);
+            }
+            $data["image"] = $request->file('image')->store('facility');
+        }
+
         $stationFacility->update($data);
+
+        return redirect()->route('stationFacility.index');
     }
 
     /**
@@ -98,6 +120,8 @@ class StationFacilityController extends Controller
      */
     public function destroy(StationFacility $stationFacility)
     {
+        $this->authorize('station');
+
         if($stationFacility->image){
             Storage::delete($stationFacility->image);
         }
