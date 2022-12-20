@@ -58,11 +58,11 @@
                     @csrf
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-4">Kereta</label>
+                            <label class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-4">Stasiun</label>
                             <select class=" form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
                                 @foreach ($stations as $station)
                                     @if ($station->user_id === Auth::user()->id)
-                                        <option value="{{ $station->id }}" placeholder='Choose the Trains'>{{ $station->name }}</option>
+                                        <option value="{{ $station->id }}" placeholder='Choose the Station'>{{ $station->name }}</option>
                                     @endif
                                 @endforeach
                             </select>

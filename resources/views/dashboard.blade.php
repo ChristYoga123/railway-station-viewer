@@ -7,26 +7,6 @@
             @can('station')
                 <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('train.index') }}">Station Dashboard</a>
             @endcan
-            <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-10">
-                <x-dropdown>
-                    <x-slot name="trigger">
-                        <a class="md:block text-slate-500 pt-4 px-8 hidden" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
-                            <span class="text-white ">{{ Auth::user()->name }}</span>
-                        </a>
-                    </x-slot>
-                    <x-slot name="content">
-                        <x-dropdown-link href="{{ route('profile.show') }}">{{ __('My profile') }}</x-dropdown-link>
-                        <x-divider />
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
         </div>
     </nav>
 

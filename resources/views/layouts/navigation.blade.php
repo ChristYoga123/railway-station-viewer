@@ -128,7 +128,6 @@
                     </x-nav-link>
                 </li>
 
-                @can('station')
                 <li class="mx-2">
                     <x-nav-link href="{{ route('stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
                         <x-slot name="icon">
@@ -138,6 +137,7 @@
                     </x-nav-link>
                 </li>
 
+                @can('station')
                   <li class="mx-2">
                     <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
                         <x-slot name="icon">
