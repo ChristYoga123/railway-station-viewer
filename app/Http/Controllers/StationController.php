@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Station\StationRequest;
 use App\Http\Requests\Station\UpdateStationRequest;
+use Illuminate\Support\Facades\Gate;
 
 class StationController extends Controller
 {
@@ -23,13 +24,13 @@ class StationController extends Controller
 
     public function create()
     {
-        $this->authorize('admin');
+        Gate::authorize('admin');
         return view('pages.stations.create');
     }
 
     public function store(StationRequest $request)
     {
-        $this->authorize('admin');
+        Gate::authorize('admin');
         $data = $request->all();
         Station::create($data);
 
@@ -49,7 +50,7 @@ class StationController extends Controller
 
     public function edit(Station $station)
     {
-        $this->authorize('admin');
+        Gate::authorize('admin');
         return view('pages.stations.edit', [
             'station' => $station
         ]);
@@ -57,7 +58,7 @@ class StationController extends Controller
 
     public function update(UpdateStationRequest $request, Station $station)
     {
-        $this->authorize('admin');
+        Gate::authorize('admin');
         $data = $request->all();
         $station->update($data);
         return redirect()->route('station.index');
@@ -65,7 +66,7 @@ class StationController extends Controller
 
     public function destroy(Station $station)
     {
-        $this->authorize('admin');
+        Gate::authorize('admin');
         $station->delete();
         return redirect()->route('station.index');
     }

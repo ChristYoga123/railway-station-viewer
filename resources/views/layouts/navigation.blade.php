@@ -84,7 +84,7 @@
                 @can ('admin')
                     {{ __('Admin Layout Pages') }}
                 @endcan
-                @can ('station')
+                @can ('train')
                     {{ __('Station Layout Pages') }}
                 @endcan
             </x-nav-heading>
@@ -92,7 +92,6 @@
             <!-- Navigation -->
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-                
                 <li class="mx-2">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         <x-slot name="icon">
@@ -142,7 +141,7 @@
                     </li>
                 @endcan
                 
-                @can('station')
+                @can('train')
                   <li class="mx-2">
                     <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
                         <x-slot name="icon">

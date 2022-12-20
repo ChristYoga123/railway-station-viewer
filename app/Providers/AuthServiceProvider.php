@@ -29,11 +29,11 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('admin', function(User $user){
-            return $user->is_admin === true;
+            return $user->is_admin === 1;
         });
 
         Gate::define('train', function(User $user){
-            return $user->is_admin === false;
+            return $user->is_admin === 0;
         });
     }
 }

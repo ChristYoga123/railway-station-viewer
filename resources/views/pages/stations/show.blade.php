@@ -46,9 +46,6 @@
                             Name
                         </th>
                         <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center bg-slate-50 text-slate-500 border-slate-100">
-                            Owner
-                        </th>
-                        <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center bg-slate-50 text-slate-500 border-slate-100">
                             Facility
                         </th>
                         <th class="px-8 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center bg-slate-50 text-slate-500 border-slate-100">
@@ -60,9 +57,6 @@
                             <tr>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 ">
                                     {{ $station->name }}
-                                </td>
-                                <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    {{ $station->User->name }}
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-left">
                                     <ol>

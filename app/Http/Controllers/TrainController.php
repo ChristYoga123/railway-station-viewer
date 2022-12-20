@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Train;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\TrainRequest;
 use App\Http\Requests\Admin\UpdateTrainRequest;
 
@@ -18,7 +19,6 @@ class TrainController extends Controller
     public function index()
     {
         $trains = Train::latest()->get();
-
         return view('pages.trains.index', compact('trains'));
     }
 
@@ -29,7 +29,7 @@ class TrainController extends Controller
      */
     public function create()
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
         return view('pages.trains.create');
     }
 
@@ -41,7 +41,7 @@ class TrainController extends Controller
      */
     public function store(TrainRequest $request)
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
 
         $data = $request->all();
 
@@ -58,7 +58,7 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
     }
 
     /**
@@ -69,7 +69,7 @@ class TrainController extends Controller
      */
     public function edit(Train $train)
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
 
         return view('pages.trains.edit', [
             'train' => $train
@@ -85,7 +85,7 @@ class TrainController extends Controller
      */
     public function update(UpdateTrainRequest $request, Train $train)
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
         $data = $request->all();
 
         $train->update($data);
@@ -101,7 +101,7 @@ class TrainController extends Controller
      */
     public function destroy(Train $train)
     {
-        $this->authorize('admin');
+        Gate::authorize('train');
 
         $train->delete();
 

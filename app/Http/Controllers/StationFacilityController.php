@@ -6,14 +6,11 @@ use App\Http\Requests\StationFacilityRequest;
 use App\Models\Station;
 use App\Models\StationFacility;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class StationFacilityController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorize('admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +18,7 @@ class StationFacilityController extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin');
         return view('pages.station_facilities.index', [
             'station_facilities' => StationFacility::all()
         ]);
@@ -33,8 +31,7 @@ class StationFacilityController extends Controller
      */
     public function create()
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         return view('pages.station_facilities.create', [
             'stations' => Station::all()
         ]);
@@ -48,8 +45,7 @@ class StationFacilityController extends Controller
      */
     public function store(StationFacilityRequest $request)
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         $data = $request->all();
         if($request->file('image')){
             $data["image"] = $request->file('image')->store('facility');
@@ -67,8 +63,7 @@ class StationFacilityController extends Controller
      */
     public function show(StationFacility $stationFacility)
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         return view('pages.station_facilities.show', [
             'station_facility' => $stationFacility
         ]);
@@ -82,8 +77,7 @@ class StationFacilityController extends Controller
      */
     public function edit(StationFacility $stationFacility)
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         $stations = Station::all();
 
         return view('pages.station_facilities.edit', [
@@ -101,8 +95,7 @@ class StationFacilityController extends Controller
      */
     public function update(StationFacilityRequest $request, StationFacility $stationFacility)
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         $data = $request->all();
         if ($request->image) {
             if ($request->old_image) {
@@ -124,8 +117,7 @@ class StationFacilityController extends Controller
      */
     public function destroy(StationFacility $stationFacility)
     {
-        $this->authorize('station');
-
+        Gate::authorize('admin');
         if($stationFacility->image){
             Storage::delete($stationFacility->image);
         }

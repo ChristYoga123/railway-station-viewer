@@ -18,8 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            TrainSeeder::class,
-            StationSeeder::class,
         ]);
     }
 }

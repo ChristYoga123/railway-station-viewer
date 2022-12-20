@@ -62,9 +62,7 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-md font-bold my-4">Kereta</label>
                             <select class="form-control block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="station_id">
                                 @foreach ($stations as $station)
-                                    @if ($station->user_id === Auth::user()->id)
-                                        <option value="{{ old('station_id', $station->id) }}" placeholder='Choose the Trains'>{{ $station->name }}</option>
-                                    @endif
+                                    <option value="{{ old('station_id', $station->id) }}" placeholder='Choose the Trains'>{{ $station->name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -14,7 +14,7 @@ class TrainStationRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check() && Auth::user()->role_id == 2;
+        return Auth::check() && Auth::user()->is_admin === 0;
     }
 
     /**
