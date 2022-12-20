@@ -9,8 +9,7 @@ class Station extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'user_id'
+        'name'
     ];
 
     public function User()

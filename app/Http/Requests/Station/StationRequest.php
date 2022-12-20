@@ -26,7 +26,6 @@ class StationRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:stations,name',
-            'user_id' => 'integer'
         ];
     }
 }

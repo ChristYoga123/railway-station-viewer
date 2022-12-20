@@ -31,7 +31,6 @@ class StationController extends Controller
     {
         $this->authorize('admin');
         $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
         Station::create($data);
 
         return redirect()->route('station.index');
