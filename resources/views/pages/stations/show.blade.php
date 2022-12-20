@@ -66,13 +66,21 @@
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-left">
                                     <ol>
-                                        @foreach ($stationFacility as $stationFacility)
+                                        @forelse ($stationFacilities as $stationFacility)
                                             <li class="list-disc">{{ $stationFacility->name }}</li>
-                                        @endforeach
+                                        @empty
+                                            <i>There are no facilities</i>
+                                        @endforelse
                                     </ol>
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    Thomas and his friends
+                                    <ol>
+                                        @forelse ($trainStations as $trainStation)
+                                            <li class="list-disc">{{ $trainStation->Train->name }}</li>
+                                        @empty
+                                            <i>There are no Trains that arrived</i>
+                                        @endforelse
+                                    </ol>
                                 </td>
                             </tr>
                     </tbody>

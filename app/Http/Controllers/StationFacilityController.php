@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class StationFacilityController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorize('admin');
+    }
     /**
      * Display a listing of the resource.
      *

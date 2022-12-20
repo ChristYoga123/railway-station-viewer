@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Station;
+use App\Models\TrainStation;
 use Illuminate\Http\Request;
+use App\Models\StationFacility;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Station\StationRequest;
 use App\Http\Requests\Station\UpdateStationRequest;
-use App\Models\StationFacility;
-use Illuminate\Support\Facades\Auth;
 
 class StationController extends Controller
 {
@@ -22,13 +23,13 @@ class StationController extends Controller
 
     public function create()
     {
-        $this->authorize('station');
+        $this->authorize('admin');
         return view('pages.stations.create');
     }
 
     public function store(StationRequest $request)
     {
-        $this->authorize('station');
+        $this->authorize('admin');
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         Station::create($data);
@@ -38,16 +39,18 @@ class StationController extends Controller
 
     public function show(Station $station)
     {
-        $stationFacility = StationFacility::all();
+        $stationFacilities = StationFacility::all();
+        $trainStations = TrainStation::all();
         return view('pages.stations.show', [
             'station' => $station,
-            'stationFacility' => $stationFacility,
+            'stationFacilities' => $stationFacilities,
+            'trainStations' => $trainStations
         ]);
     }
 
     public function edit(Station $station)
     {
-        $this->authorize('station');
+        $this->authorize('admin');
         return view('pages.stations.edit', [
             'station' => $station
         ]);
@@ -55,7 +58,7 @@ class StationController extends Controller
 
     public function update(UpdateStationRequest $request, Station $station)
     {
-        $this->authorize('station');
+        $this->authorize('admin');
         $data = $request->all();
         $station->update($data);
         return redirect()->route('station.index');
@@ -63,7 +66,7 @@ class StationController extends Controller
 
     public function destroy(Station $station)
     {
-        $this->authorize('station');
+        $this->authorize('admin');
         $station->delete();
         return redirect()->route('station.index');
     }
