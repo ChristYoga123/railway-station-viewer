@@ -24,13 +24,13 @@ class StationController extends Controller
 
     public function create()
     {
-        Gate::authorize('admin');
+        // Gate::authorize('admin');
         return view('pages.stations.create');
     }
 
     public function store(StationRequest $request)
     {
-        Gate::authorize('admin');
+        // Gate::authorize('admin');
         $data = $request->all();
         Station::create($data);
 
@@ -50,7 +50,7 @@ class StationController extends Controller
 
     public function edit(Station $station)
     {
-        Gate::authorize('admin');
+        // Gate::authorize('admin');
         return view('pages.stations.edit', [
             'station' => $station
         ]);
@@ -58,7 +58,7 @@ class StationController extends Controller
 
     public function update(UpdateStationRequest $request, Station $station)
     {
-        Gate::authorize('admin');
+        // Gate::authorize('admin');
         $data = $request->all();
         $station->update($data);
         return redirect()->route('station.index');
@@ -66,7 +66,7 @@ class StationController extends Controller
 
     public function destroy(Station $station)
     {
-        Gate::authorize('admin');
+        // Gate::authorize('admin');
         $station->delete();
         return redirect()->route('station.index');
     }

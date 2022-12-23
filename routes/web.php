@@ -23,27 +23,38 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
+    Route::middleware('adminTrain')->prefix('admin-train')->group(function () {
+        Route::get('/', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
 
-    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::resource('train', TrainController::class);
-    Route::resource('station', StationController::class);
-    Route::resource('trainStation', TrainStationController::class);
-    Route::resource('stationFacility', StationFacilityController::class);
+        Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::resource('train', TrainController::class);
+        Route::resource('station', StationController::class)->only(['index', 'show']);
+        Route::resource('trainStation', TrainStationController::class);
+    });
+
+
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        Route::get('/', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+        Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::resource('train', TrainController::class)->only(['index']);
+        Route::resource('station', StationController::class);
+        Route::resource('stationFacility', StationFacilityController::class);
+        Route::resource('trainStation', TrainStationController::class);
+    });
 });

@@ -29,7 +29,7 @@ class TrainController extends Controller
      */
     public function create()
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
         return view('pages.trains.create');
     }
 
@@ -41,7 +41,7 @@ class TrainController extends Controller
      */
     public function store(TrainRequest $request)
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
 
         $data = $request->all();
 
@@ -58,7 +58,7 @@ class TrainController extends Controller
      */
     public function show(Train $train)
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
     }
 
     /**
@@ -69,7 +69,7 @@ class TrainController extends Controller
      */
     public function edit(Train $train)
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
 
         return view('pages.trains.edit', [
             'train' => $train
@@ -85,7 +85,7 @@ class TrainController extends Controller
      */
     public function update(UpdateTrainRequest $request, Train $train)
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
         $data = $request->all();
 
         $train->update($data);
@@ -101,7 +101,7 @@ class TrainController extends Controller
      */
     public function destroy(Train $train)
     {
-        Gate::authorize('train');
+        // Gate::authorize('train');
 
         $train->delete();
 
