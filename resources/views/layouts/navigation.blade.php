@@ -11,12 +11,22 @@
         >
             <i class="fas fa-bars"></i>
         </button>
+        @can('train')
         <a
             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             href="{{ route('dashboard') }}"
         >
             Railway Station Viewer
         </a>
+        @endcan
+        @can('admin')
+        <a
+            class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
+            href="{{ route('dashboard') }}"
+        >
+            Railway Station Viewer
+        </a>
+        @endcan
         <ul class="md:hidden items-center flex flex-wrap list-none">
             <li class="inline-block relative">
                 <a

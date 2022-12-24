@@ -11,7 +11,7 @@
                 <hr class="mt-6 border-b-1 border-slate-300"/>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="/register">
                     @csrf
 
                     <div class="relative w-full mb-3">
@@ -70,7 +70,7 @@
                             {{ __('Register') }}
                         </x-primary-button>
 
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('admin-train.login') }}">
                             {{ __('Already registered?') }}
                         </a>
                     </div>

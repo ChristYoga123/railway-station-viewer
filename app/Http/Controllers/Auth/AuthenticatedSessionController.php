@@ -15,9 +15,14 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function adminLogin()
     {
-        return view('auth.login');
+        return view('auth.admin-login');
+    }
+
+    public function adminTrainLogin()
+    {
+        return view('auth.admin-train-login');
     }
 
     /**
@@ -32,7 +37,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(Auth::user()->is_admin === 1){
+            return redirect()->route('dashboard');
+        }
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -43,12 +51,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        $is_admin = false;
+        if(Auth::user()->is_admin === 1) {
+            $is_admin = true;
+        }
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        if($is_admin){
+            return redirect()->route('admin.login');
+        }
+        return redirect()->route('admin-train.login');
     }
 }

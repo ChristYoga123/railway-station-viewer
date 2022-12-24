@@ -19,18 +19,13 @@ use App\Http\Controllers\TrainStationController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
-
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::middleware('adminTrain')->prefix('admin-train')->group(function () {
-        Route::get('/', function () {
+        Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-
         Route::get('users', [UserController::class, 'index'])->name('users.index');
 
         Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
@@ -43,10 +38,9 @@ Route::middleware('auth')->group(function () {
 
 
     Route::middleware('admin')->prefix('admin')->group(function () {
-        Route::get('/', function () {
+        Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-
         Route::get('users', [UserController::class, 'index'])->name('users.index');
 
         Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
