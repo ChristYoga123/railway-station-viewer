@@ -1,14 +1,12 @@
 <x-app-layout>
-    <nav class="absolute top-0 left-0 z-10 flex items-center w-full p-4 bg-transparent md:flex-row md:flex-nowrap md:justify-start">
-        <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-            @can('admin')
-                <a class="text-white w-full text-lg uppercase hidden md:inline-block font-semibold pt-4" href="{{ route('dashboard') }}">Admin Dashboard</a>
-            @endcan
-            @can('station')
-                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('dashboard') }}">Station Dashboard</a>
-            @endcan
-        </div>
-    </nav>
+    @section('title')
+        @can('admin')
+            <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('dashboard') }}">Admin Dashboard</a>
+        @endcan
+        @can('station')
+            <a class="text-white w-72 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('dashboard') }}">Station Dashboard</a>
+        @endcan
+    @endsection
 
     @if ($errors->any())
         <div class="mb-5 px-8" role="alert">

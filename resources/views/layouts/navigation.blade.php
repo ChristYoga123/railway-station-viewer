@@ -27,6 +27,7 @@
             Railway Station Viewer
         </a>
         @endcan
+
         <ul class="md:hidden items-center flex flex-wrap list-none">
             <li class="inline-block relative">
                 <a
@@ -62,6 +63,7 @@
                 </div>
             </li>
         </ul>
+
         <div
             class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden"
             id="example-collapse-sidebar"
@@ -121,7 +123,7 @@
                         </x-nav-link>
                     </li>
                 @endcan
-                
+
                 <li class="mx-2">
                     <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
                         <x-slot name="icon">
@@ -130,7 +132,7 @@
                         {{ __('Trains') }}
                     </x-nav-link>
                 </li>
-                
+
                 <li class="mx-2">
                     <x-nav-link href="{{ route('station.index') }}" :active="request()->routeIs('station.index')">
                         <x-slot name="icon">
@@ -139,7 +141,7 @@
                         {{ __('Stations') }}
                     </x-nav-link>
                 </li>
-                
+
                 @can('admin')
                     <li class="mx-2">
                         <x-nav-link href="{{ route('stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
@@ -150,7 +152,7 @@
                         </x-nav-link>
                     </li>
                 @endcan
-                
+
                 @can('train')
                   <li class="mx-2">
                     <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
