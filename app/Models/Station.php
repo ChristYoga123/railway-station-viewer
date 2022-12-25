@@ -26,4 +26,9 @@ class Station extends Model
     {
         return $this->hasMany(TrainStation::class);
     }
+
+    public function Route()
+    {
+        return $this->hasMany(Route::class);
+    }
 }
