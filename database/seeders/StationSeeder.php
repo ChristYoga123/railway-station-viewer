@@ -16,7 +16,8 @@ class StationSeeder extends Seeder
     public function run()
     {
         Station::create([
-            'name' => 'Stasiun Jember'
+            'name' => 'Stasiun Jember',
+            "user_id" => 1
         ]);
     }
 }
