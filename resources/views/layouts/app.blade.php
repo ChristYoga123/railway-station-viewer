@@ -16,6 +16,7 @@
     <script src="/ckeditor/ckeditor.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body class="antialiased text-slate-700">
@@ -68,6 +69,7 @@
         </div>
     </div>
 
+    @livewireScripts
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script type="text/javascript">
         /* Sidebar - Side navigation menu on mobile/responsive mode */
