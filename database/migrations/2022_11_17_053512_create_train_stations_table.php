@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('train_id')->constrained();
             $table->foreignId('station_id')->constrained();
             $table->time('arrival_time');
-            $table->time('late_time');
-            $table->time('delay_time');
+            $table->time('departure_time');
+            $table->time('delay_time')->nullable();
             $table->timestamps();
         });
     }
