@@ -8,6 +8,10 @@ use App\Models\Station;
 
 class RouteController extends Controller
 {
+    public function index()
+    {
+        return view("pages.routes.index");
+    }
     // Fungsi untuk mencari rute dari stasiun A sampai stasiun Z
     public function findRoute($start, $end, $path = []) {
         // Menambahkan stasiun awal ke daftar rute

@@ -11,8 +11,13 @@ class Route extends Model
 
     protected $guarded = ['id'];
 
-    public function Station()
+    public function StartStation()
     {
-        return $this->belongsToMany(Station::class);
+        return $this->belongsTo(Station::class, "station_start_id");
+    }
+
+    public function EndStation()
+    {
+        return $this->belongsTo(Station::class, "station_end_id");
     }
 }
