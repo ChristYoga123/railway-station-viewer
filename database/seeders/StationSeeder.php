@@ -15,9 +15,23 @@ class StationSeeder extends Seeder
      */
     public function run()
     {
-        Station::create([
-            'name' => 'Stasiun Jember',
-            "user_id" => 1
-        ]);
+        $stations = [
+            [
+                'name' => 'Stasiun Jember',
+                "user_id" => 2
+            ],
+            [
+                'name' => 'Stasiun Ambulu',
+                "user_id" => 2
+            ],
+            [
+                'name' => 'Stasiun Jenggawa',
+                "user_id" => 2
+            ]
+        ];
+       foreach($stations as $station)
+       {
+            Station::create($station);
+       }
     }
 }
