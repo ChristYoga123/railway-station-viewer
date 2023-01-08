@@ -163,6 +163,15 @@
                     </x-nav-link>
                   </li>
                 @endcan
+
+                <li class="mx-2">
+                    <x-nav-link href="{{ route('route.index') }}" :active="request()->routeIs('route.index')">
+                        <x-slot name="icon">
+                            <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
+                        </x-slot>
+                        {{ __('Route') }}
+                    </x-nav-link>
+                </li>
             </ul>
 
             {{-- <x-divider class="my-4" />

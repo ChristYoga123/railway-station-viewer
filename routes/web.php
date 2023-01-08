@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RouteController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\StationFacilityController;
 use App\Http\Controllers\TrainStationController;
@@ -64,5 +65,6 @@ Route::middleware('auth')->group(function () {
         Route::resource('station', StationController::class);
         Route::resource('stationFacility', StationFacilityController::class);
         Route::resource('trainStation', TrainStationController::class);
+        Route::resource('route', RouteController::class);
     });
 });
