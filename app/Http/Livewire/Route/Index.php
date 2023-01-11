@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Route;
 
 use App\Models\Route;
+use App\Models\Station;
 use Livewire\Component;
+use Ramsey\Uuid\Type\Integer;
 
 class Index extends Component
 {
@@ -14,10 +16,18 @@ class Index extends Component
         "routeUpdated",
         "cancelUpdate"
     ];
+
+    public $search_station_start;
+    public $search_station_end;
+
     public function render()
     {
+        $searchStart = Route::where('station_start_id', 'like', '%'.$this->search_station_start.'%')->get();
+        $searchEnd = Route::where('station_end_id', 'like', '%'.$this->search_station_end.'%')->get();
+
         return view('livewire.route.index')->with([
-            "routes" => Route::with(["StartStation", "EndStation"])->get()   
+            'stations' => Station::all(),
+            "routes" => Route::with(["StartStation", "EndStation"])->get()
         ]);
     }
 

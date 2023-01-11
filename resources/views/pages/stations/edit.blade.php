@@ -8,7 +8,7 @@
                 <x-dropdown>
                     <x-slot name="trigger">
                         <a class="md:block text-slate-500 pt-4 px-8 hidden" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
-                            
+
                         </a>
                     </x-slot>
                     <x-slot name="content">
@@ -27,7 +27,7 @@
         </nav>
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
             <div class="mb-4 ml-8 mt-8">
-                <a href="{{ route('station.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                <a href="{{ route('admin.station.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <i class="fas fa-arrow-left mr-3 text-sm"></i>
                     {{ __('Back to Train Dashboard') }}
                 </a>
@@ -53,7 +53,7 @@
             @endif
 
             <div class="block w-full overflow-x-auto px-8">
-                <form action="{{ route('station.update', $station->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.station.update', $station->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-wrap -mx-3 mb-6">

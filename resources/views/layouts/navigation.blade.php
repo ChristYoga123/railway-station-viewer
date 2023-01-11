@@ -93,85 +93,107 @@
             </div>
             <!-- Heading -->
             <x-nav-heading>
-                @can ('admin')
+                @if ('is_admin' == 1)
                     {{ __('Admin Layout Pages') }}
-                @endcan
-                @can ('train')
+                @else
                     {{ __('Station Layout Pages') }}
-                @endcan
+                @endif
             </x-nav-heading>
 
             <!-- Navigation -->
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-                <li class="mx-2">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        <x-slot name="icon">
-                            <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
-                        </x-slot>
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </li>
-
-                @can('admin')
+                @if ('is_admin' == 1)
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('dashboard')">
+                            <x-slot name="icon">
+                                <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-users mr-2 text-sm opacity-75"></i>
                             </x-slot>
                             {{ __('Users') }}
                         </x-nav-link>
                     </li>
-                @endcan
 
-                <li class="mx-2">
-                    <x-nav-link href="{{ route('train.index') }}" :active="request()->routeIs('train.index')">
-                        <x-slot name="icon">
-                            <i class="fas fa-train mr-3 text-sm opacity-75"></i>
-                        </x-slot>
-                        {{ __('Trains') }}
-                    </x-nav-link>
-                </li>
-
-                <li class="mx-2">
-                    <x-nav-link href="{{ route('station.index') }}" :active="request()->routeIs('station.index')">
-                        <x-slot name="icon">
-                            <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
-                        </x-slot>
-                        {{ __('Stations') }}
-                    </x-nav-link>
-                </li>
-
-                @can('admin')
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
+                        <x-nav-link href="{{ route('admin.train.index') }}" :active="request()->routeIs('train.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-train mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Trains') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('admin.station.index') }}" :active="request()->routeIs('station.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Stations') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('admin.stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-check-circle mr-3 text-sm opacity-75"></i>
                             </x-slot>
                             {{ __('Facility') }}
                         </x-nav-link>
                     </li>
-                @endcan
 
-                @can('train')
-                  <li class="mx-2">
-                    <x-nav-link href="{{ route('trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
-                        <x-slot name="icon">
-                            <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
-                        </x-slot>
-                        {{ __('Train Schedule') }}
-                    </x-nav-link>
-                  </li>
-                @endcan
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('admin.route.index') }}" :active="request()->routeIs('route.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Route') }}
+                        </x-nav-link>
+                    </li>
+                @else
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('train.dashboard') }}" :active="request()->routeIs('dashboard')">
+                            <x-slot name="icon">
+                                <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    </li>
 
-                <li class="mx-2">
-                    <x-nav-link href="{{ route('route.index') }}" :active="request()->routeIs('route.index')">
-                        <x-slot name="icon">
-                            <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
-                        </x-slot>
-                        {{ __('Route') }}
-                    </x-nav-link>
-                </li>
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('train.train.index') }}" :active="request()->routeIs('train.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-train mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Trains') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('train.station.index') }}" :active="request()->routeIs('station.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Stations') }}
+                        </x-nav-link>
+                    </li>
+
+                    <li class="mx-2">
+                        <x-nav-link href="{{ route('train.trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
+                            <x-slot name="icon">
+                                <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
+                            </x-slot>
+                            {{ __('Train Schedule') }}
+                        </x-nav-link>
+                    </li>
+                @endif
             </ul>
 
             {{-- <x-divider class="my-4" />

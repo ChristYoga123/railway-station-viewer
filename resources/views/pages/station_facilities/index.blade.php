@@ -6,18 +6,22 @@
     </x-slot>
 
     @section('title')
-        <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('stationFacility.index') }}">Station Facility</a>
+        @if ('is_admin' == 1)
+            <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.stationFacility.index') }}">Station Facility</a>
+        @else
+            <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.stationFacility.index') }}">Station Facility</a>
+        @endif
     @endsection
 
     <div class="w-full px-4">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
-            @can('admin')
+            @if('is_admin' == 1)
                 <div class="mb-8 ml-5 mt-6">
-                    <a href="{{ route('stationFacility.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                    <a href="{{ route('admin.stationFacility.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                         + Create Facility
                     </a>
                 </div>
-            @endcan
+            @endif
 
             <div class="block w-full overflow-x-auto rounded">
                 <table class="items-center w-full bg-transparent border-collapse">
@@ -50,9 +54,9 @@
                                     <img src="/storage/{{ $stationFacility->image }}" alt="" width="180px">
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    <a href="{{ route('stationFacility.show', $stationFacility->id) }}" class="mr-1 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Detail</a>
-                                    <a href="{{ route('stationFacility.edit', $stationFacility->id) }}" class=" mr-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Edit</a>
-                                    <form action="{{ route('stationFacility.destroy', $stationFacility->id) }}" method="post" class="inline">
+                                    <a href="{{ route('admin.stationFacility.show', $stationFacility->id) }}" class="mr-1 text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Detail</a>
+                                    <a href="{{ route('admin.stationFacility.edit', $stationFacility->id) }}" class=" mr-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2">Edit</a>
+                                    <form action="{{ route('admin.stationFacility.destroy', $stationFacility->id) }}" method="post" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>

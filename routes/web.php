@@ -28,6 +28,7 @@ Route::get('/', function () {
 Route::get('admin/login', [AuthenticatedSessionController::class, 'adminLogin'])->name('admin.login');
 Route::get('admin-train/login', [AuthenticatedSessionController::class, 'adminTrainLogin'])->name('admin-train.login');
 
+
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
@@ -35,15 +36,15 @@ Route::middleware('auth')->group(function () {
     //     return view('auth/login');
     // });
 
-    Route::middleware('adminTrain')->prefix('admin-train')->group(function () {
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::middleware('train')->prefix('admin-train')->name('train.')->group(function () {
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
 
         Route::get('users', [UserController::class, 'index'])->name('users.index');
-
-        Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::resource('train', TrainController::class);
         Route::resource('station', StationController::class)->only(['index', 'show']);
@@ -51,15 +52,12 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    Route::middleware('admin')->prefix('admin')->group(function () {
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
 
         Route::get('users', [UserController::class, 'index'])->name('users.index');
-
-        Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
         Route::resource('train', TrainController::class)->only(['index']);
         Route::resource('station', StationController::class);

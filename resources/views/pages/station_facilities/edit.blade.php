@@ -54,7 +54,7 @@
             @endif
 
             <div class="block w-full overflow-x-auto px-8">
-                <form action="{{ route('stationFacility.update', $stationFacility->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.stationFacility.update', $stationFacility->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="flex flex-wrap -mx-3 mb-6">

@@ -6,7 +6,11 @@
     </x-slot>
 
     @section('title')
-        <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.index') }}">Trains</a>
+        @if ('is_admin' == 1)
+            <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.train.index') }}">Trains</a>
+        @else
+            <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.train.index') }}">Trains</a>
+        @endif
     @endsection
 
     <div class="w-full px-4 ">

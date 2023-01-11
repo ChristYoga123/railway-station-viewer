@@ -1,6 +1,6 @@
 <div>
     @if (session()->has("success"))
-        <div class="inline-flex overflow-hidden mb-4 w-full bg-white rounded-lg shadow-md">
+        <div class="inline-flex overflow-hidden mb-6 w-full bg-white rounded-md shadow-md">
             <div class="flex justify-center items-center w-12 bg-green-500">
                 <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"></path>
@@ -15,7 +15,7 @@
             </div>
         </div>
     @elseif(session()->has("error"))
-        <div class="inline-flex overflow-hidden mb-4 w-full bg-white rounded-lg shadow-md">
+        <div class="inline-flex overflow-hidden mb-6 w-full bg-white rounded-md shadow-md">
             <div class="flex justify-center items-center w-12 bg-red-500">
                 <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"></path>
@@ -30,6 +30,9 @@
             </div>
         </div>
     @endif
+</div>
+
+<div>
     @can('admin')
         @if ($statusUpdate)
             <div class="mb-8 ml-5 mt-6">
@@ -42,6 +45,49 @@
         @endif
     @endcan
     <hr class="mb-5">
+
+    <div class="mb-8 ml-5 mt-6">
+        <form>
+            <div class="flex justify-around gap-3">
+                <div class="form flex flex-col">
+                    <label for="search_station_start" class="text-xs font-semibold mb-3">Station Awal</label>
+                    <select wire:model="search_station_start"
+                            id="search_station_start"
+                            class="select select-primary w-full max-w-xs
+                            @error("search_station_start")
+                                select-error
+                            @enderror">
+                        <option value="">Pilih stasiun awal</option>
+                        @foreach ($stations as $station)
+                            <option value="{{ $station->id }}">{{ $station->name }}</option>
+                        @endforeach
+                    </select>
+                    {{-- * Show onClick={id} --}}
+                    <button class="btn btn-secondary mt-6">{{ $search_station_start }}</button>
+                </div>
+
+                <div class="form flex flex-col">
+                    <label for="search_station_end" class="text-xs font-semibold mb-3">Station Akhir</label>
+                    <select wire:model="search_station_end"
+                            id="search_station_end"
+                            class="select select-primary w-full max-w-xs
+                            @error("search_station_end")
+                                select-error
+                            @enderror">
+                        <option value="">Pilih stasiun akhir</option>
+                        @foreach ($stations as $station)
+                            <option value="{{ $station->id }}">{{ $station->name }}</option>
+                        @endforeach
+                    </select>
+                    {{-- * Show onClick={id} --}}
+                    <button class="btn btn-secondary mt-6">{{ $search_station_end }}</button>
+                </div>
+
+                <button class="btn btn-secondary mt-6">Cari</button>
+            </div>
+        </form>
+    </div>
+
     <div class="block w-full overflow-x-auto rounded">
         <table class="items-center w-full bg-transparent border-collapse">
             <thead>

@@ -10,10 +10,11 @@ class Create extends Component
 {
     public $station_start_id,
            $station_end_id;
+
     public function render()
     {
         return view('livewire.route.create')->with([
-            "stations" => Station::all()    
+            "stations" => Station::all()
         ]);
     }
 
@@ -23,6 +24,7 @@ class Create extends Component
             "station_start_id" => "required|integer",
             "station_end_id" => "required|integer"
         ]);
+
         if($this->station_start_id === $this->station_end_id)
         {
             $error = "Stasiun awal dan stasiun akhir tidak boleh sama";
@@ -33,7 +35,7 @@ class Create extends Component
                 "station_start_id" => $this->station_start_id,
                 "station_end_id" => $this->station_end_id,
                 ]);
-                
+
             $this->resetInput();
             $this->emit("routeStored", $route);
         }

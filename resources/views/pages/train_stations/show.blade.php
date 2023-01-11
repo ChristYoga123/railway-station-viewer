@@ -7,7 +7,11 @@
 
     <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-8">
         <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-            <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('trainStation.index') }}">Station Schedule Detail</a>
+            @if ('is_admin' == 1)
+                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('admin.trainStation.index') }}">Station Schedule Detail</a>
+            @else
+                <a class="text-white text-lg uppercase hidden md:inline-block font-semibold w-full" href="{{ route('train.trainStation.index') }}">Station Schedule Detail</a>
+            @endif
         </div>
         <div class="flex flex-wrap items-center justify-end w-full px-4 mx-auto md:flex-nowrap md:px-20">
                 <x-dropdown>
@@ -32,10 +36,17 @@
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
 
             <div class="mb-10 ml-5 mt-8">
-                <a href="{{ route('trainStation.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    <i class="fas fa-arrow-left mr-3 text-sm"></i>
-                    {{ __('Back to Station Dashboard') }}
-                </a>
+                @if ('is_admin' == 1)
+                    <a href="{{ route('admin.trainStation.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        <i class="fas fa-arrow-left mr-3 text-sm"></i>
+                        {{ __('Back to Station Dashboard') }}
+                    </a>
+                @else
+                    <a href="{{ route('train.trainStation.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        <i class="fas fa-arrow-left mr-3 text-sm"></i>
+                        {{ __('Back to Station Dashboard') }}
+                    </a>
+                @endif
             </div>
 
             <div class="block w-full overflow-x-auto">
