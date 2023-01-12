@@ -6,11 +6,12 @@
     </x-slot>
 
     @section('title')
-        @if ('is_admin' == 1)
+        @can ('admin')
             <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.trainStation.index') }}">Train Schedule</a>
-        @else
+        @endcan
+        @can('train')
             <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.trainStation.index') }}">Train Schedule</a>
-        @endif
+        @endcan
     @endsection
 
     <div class="w-full px-4">
@@ -66,9 +67,10 @@
                                     {{ $trainStation->delay_time }}
                                 </td>
                                 <td class="px-8 py-4 whitespace-nowrap text-md text-gray-500 text-center">
-                                    @if('is_admin' == 1)
+                                    @can('admin')
                                         <a href="{{ route('admin.trainStation.show', $trainStation->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
-                                    @else
+                                    @endcan
+                                    @can('train')
                                         <a href="{{ route('train.trainStation.show', $trainStation->id) }}" class=" text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  mb-2">Detail</a>
                                         <a href="{{ route('train.trainStation.edit', $trainStation->id) }}" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Edit</a>
                                         <form action="{{ route('train.trainStation.destroy', $trainStation->id) }}" method="post" class="inline">
@@ -76,10 +78,10 @@
                                             @method('DELETE')
                                             <button type="submit" class="inline text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 cursor-pointer">Delete</button>
                                         </form>
-                                    @endif
+                                    @endcan
                                 </td>
                             </tr>
-                    @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

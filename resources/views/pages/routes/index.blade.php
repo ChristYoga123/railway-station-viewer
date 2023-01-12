@@ -6,7 +6,7 @@
     </x-slot>
 
     @section('title')
-        <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('route.index') }}">Rute Stasiun</a>
+        <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.route.index') }}">Rute Stasiun</a>
     @endsection
 
     <div class="w-full px-4 ">

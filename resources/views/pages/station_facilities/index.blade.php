@@ -6,22 +6,23 @@
     </x-slot>
 
     @section('title')
-        @if ('is_admin' == 1)
+        @can ('admin')
             <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.stationFacility.index') }}">Station Facility</a>
-        @else
+        @endcan
+        @can('train')
             <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.stationFacility.index') }}">Station Facility</a>
-        @endif
+        @endcan
     @endsection
 
     <div class="w-full px-4">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
-            @if('is_admin' == 1)
+            @can('admin')
                 <div class="mb-8 ml-5 mt-6">
                     <a href="{{ route('admin.stationFacility.create') }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                         + Create Facility
                     </a>
                 </div>
-            @endif
+            @endcan
 
             <div class="block w-full overflow-x-auto rounded">
                 <table class="items-center w-full bg-transparent border-collapse">
