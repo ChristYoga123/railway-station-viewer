@@ -25,11 +25,12 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        @if ('is_admin' == 1)
-                            <a href="{{ route('admin.dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                        @else
-                            <a href="{{ route('train.dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                        @endif
+                        @can('admin')
+                            <a href="{{ route('admin.dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Admin Dashboard</a>
+                        @endcan
+                        @can('train')
+                            <a href="{{ route('train.dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Admin Train Dashboard</a>
+                        @endcan
                     @else
                         <a href="{{ route('admin.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline px-4">Admin Log in</a>
                         <a href="{{ route('admin-train.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline px-4">Admin Train Log in</a>

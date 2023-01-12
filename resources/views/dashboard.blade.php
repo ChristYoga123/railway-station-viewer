@@ -1,10 +1,11 @@
 <x-app-layout>
     @section('title')
-        @if('is_admin' == 1)
+        @can('admin')
             <a class="text-white w-64 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-        @else
+        @endcan
+        @can('train')
             <a class="text-white w-72 text-lg uppercase hidden md:inline-block font-semibold pt-8" href="{{ route('train.dashboard') }}">Station Dashboard</a>
-        @endif
+        @endcan
     @endsection
 
     @if ($errors->any())
