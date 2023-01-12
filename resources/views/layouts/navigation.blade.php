@@ -14,7 +14,7 @@
         @can('train')
         <a
             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            href="{{ route('dashboard') }}"
+            href="{{ route('train.dashboard') }}"
         >
             Railway Station Viewer
         </a>
@@ -22,7 +22,7 @@
         @can('admin')
         <a
             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            href="{{ route('dashboard') }}"
+            href="{{ route('admin.dashboard') }}"
         >
             Railway Station Viewer
         </a>
@@ -73,12 +73,12 @@
             >
                 <div class="flex flex-wrap">
                     <div class="w-6/12">
-                        <a
+                        {{-- <a
                             class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                             href="{{ route('dashboard') }}"
                         >
                             Railway Station Viewer
-                        </a>
+                        </a> --}}
                     </div>
                     <div class="w-6/12 flex justify-end">
                         <button
@@ -105,7 +105,7 @@
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 @if ('is_admin' == 1)
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <x-nav-link href="{{ route('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
                             <x-slot name="icon">
                                 <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                             </x-slot>
@@ -114,7 +114,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')">
+                        <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-users mr-2 text-sm opacity-75"></i>
                             </x-slot>
@@ -123,7 +123,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.train.index') }}" :active="request()->routeIs('train.index')">
+                        <x-nav-link href="{{ route('admin.train.index') }}" :active="request()->routeIs('admin.train.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-train mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -132,7 +132,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.station.index') }}" :active="request()->routeIs('station.index')">
+                        <x-nav-link href="{{ route('admin.station.index') }}" :active="request()->routeIs('admin.station.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -141,7 +141,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.stationFacility.index') }}" :active="request()->routeIs('stationFacility.index')">
+                        <x-nav-link href="{{ route('admin.stationFacility.index') }}" :active="request()->routeIs('admin.stationFacility.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-check-circle mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -150,7 +150,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('admin.route.index') }}" :active="request()->routeIs('route.index')">
+                        <x-nav-link href="{{ route('admin.route.index') }}" :active="request()->routeIs('admin.route.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -159,7 +159,7 @@
                     </li>
                 @else
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('train.dashboard') }}" :active="request()->routeIs('dashboard')">
+                        <x-nav-link href="{{ route('train.dashboard') }}" :active="request()->routeIs('train.dashboard')">
                             <x-slot name="icon">
                                 <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
                             </x-slot>
@@ -168,7 +168,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('train.train.index') }}" :active="request()->routeIs('train.index')">
+                        <x-nav-link href="{{ route('train.train.index') }}" :active="request()->routeIs('train.train.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-train mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -177,7 +177,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('train.station.index') }}" :active="request()->routeIs('station.index')">
+                        <x-nav-link href="{{ route('train.station.index') }}" :active="request()->routeIs('train.station.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-globe mr-3 text-sm opacity-75"></i>
                             </x-slot>
@@ -186,7 +186,7 @@
                     </li>
 
                     <li class="mx-2">
-                        <x-nav-link href="{{ route('train.trainStation.index') }}" :active="request()->routeIs('trainStation.index')">
+                        <x-nav-link href="{{ route('train.trainStation.index') }}" :active="request()->routeIs('train.trainStation.index')">
                             <x-slot name="icon">
                                 <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                             </x-slot>
