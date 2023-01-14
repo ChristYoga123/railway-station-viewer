@@ -37,8 +37,10 @@
                 @enderror
             </div>
 
-            <button class="btn btn-warning mt-6">Simpan</button>
-            <button wire:click="cancel" type="button" class="btn btn-error mt-6">Batal</button>
+            <div class="flex gap-3">
+                <button class="btn btn-warning mt-6">Simpan</button>
+                <button wire:click="cancel" type="button" class="btn btn-error mt-6">Batal</button>
+            </div>
         </div>
     </form>
 </div>

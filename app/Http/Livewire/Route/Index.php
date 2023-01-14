@@ -9,6 +9,10 @@ use Ramsey\Uuid\Type\Integer;
 
 class Index extends Component
 {
+    public $search_station_start;
+    public $search_station_end;
+    // data rute
+    public $stationRoute;
     public $statusUpdate = false;
     protected $listeners = [
         "routeStored",
@@ -17,18 +21,51 @@ class Index extends Component
         "cancelUpdate"
     ];
 
-    public $search_station_start;
-    public $search_station_end;
 
     public function render()
-    {
-        $searchStart = Route::where('station_start_id', 'like', '%'.$this->search_station_start.'%')->get();
-        $searchEnd = Route::where('station_end_id', 'like', '%'.$this->search_station_end.'%')->get();
+    {   
+        // menampilkan rute
+        if($this->search_station_start)
+        {   
+            $routes = $this->findRoute($this->search_station_start, $this->search_station_end);
 
+            $station_name_list = [];
+            foreach($routes as $route){
+                $name = Station::find($route);
+                $station_name_list[] = $name->name;
+            }
+            $this->stationRoute = $station_name_list;
+        }
+
+        // menampilkan data untuk keperluan select dan data nama stasiun di tabel
         return view('livewire.route.index')->with([
             'stations' => Station::all(),
-            "routes" => Route::with(["StartStation", "EndStation"])->get()
+            "routes" => Route::with(["StartStation", "EndStation"])->get(),
+            "filter_station_routes" => $this->stationRoute
         ]);
+    }
+
+    // fungsi mencari rute
+    public function findRoute($start, $end, $path = []) {
+        // Menambahkan stasiun awal ke daftar rute
+        $path[] = $start;
+        // Jika stasiun awal sama dengan stasiun akhir, maka rute sudah ditemukan
+        if ($start == $end) {
+            return $path;
+        }
+        // Query untuk mengambil stasiun-stasiun yang terhubung dengan stasiun awal
+        $connections = Route::where('station_start_id', $start)->get();
+        foreach ($connections as $connection) {
+            $next_station = $connection->station_end_id;
+            // Jika stasiun belum ada di daftar rute, cari rute ke stasiun tersebut
+            if (!in_array($next_station, $path)) {
+                $new_path = $this->findRoute($next_station, $end, $path);
+                if ($new_path) {
+                    return $new_path;
+                }
+            }
+        }
+        return $path;
     }
 
     public function routeStored($route)
@@ -61,6 +98,7 @@ class Index extends Component
 
     public function destroy($route_id)
     {
+        $this->statusUpdate = false;
         $route = Route::find($route_id);
         $route->delete();
         session()->flash("success", "Data berhasil dihapus");

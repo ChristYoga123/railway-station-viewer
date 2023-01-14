@@ -33,13 +33,6 @@ class RouteController extends Controller
             }
         }
         return $path;
-        // $station_name_list = [];
-        // foreach($path as $p) {
-        //     $name = Station::find($p);
-        //     $station_name_list[] = $name->name;
-        // }
-
-        // return $station_name_list;
     }
 
     // Fungsi untuk menampilkan rute dari stasiun A sampai stasiun Z
@@ -48,7 +41,7 @@ class RouteController extends Controller
         $end = $request->input('end');
         // Mencari rute dari stasiun A sampai stasiun Z
         $routes = $this->findRoute($start, $end);
-        $station_namee_list = [];
+        $station_name_list = [];
         foreach($routes as $route){
             $name = Station::find($route);
             $station_name_list[] = $name->name;
@@ -56,7 +49,7 @@ class RouteController extends Controller
         // Menampilkan rute yang ditemukan
         return response()->json([
             'status' => 'success',
-            'route' => implode(' => ', $station_name_list)
+            'station' => $station_name_list
         ]);
     }
 }

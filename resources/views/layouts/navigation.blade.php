@@ -11,23 +11,6 @@
         >
             <i class="fas fa-bars"></i>
         </button>
-<<<<<<< HEAD
-        @can('train')
-        <a
-            class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            href="{{ route('train.dashboard') }}"
-        >
-            Railway Station Viewer
-        </a>
-        @endcan
-        @can('admin')
-        <a
-            class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-            href="{{ route('admin.dashboard') }}"
-        >
-            Railway Station Viewer
-        </a>
-=======
         @can ('admin')
             <a
                 class="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
@@ -43,7 +26,6 @@
             >
                 Railway Station Viewer
             </a>
->>>>>>> 0df1c0d (fix view routes)
         @endcan
 
         <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -179,11 +161,7 @@
                     </li>
 
                     <li class="mx-2">
-<<<<<<< HEAD
-                        <x-nav-link href="{{ route('admin.route.index') }}" :active="request()->routeIs('admin.route.index')">
-=======
                         <x-nav-link href="{{ route('admin.trainStation.index') }}" :active="request()->routeIs('admin.trainStation.index')">
->>>>>>> 0df1c0d (fix view routes)
                             <x-slot name="icon">
                                 <i class="fas fa-clock mr-3 text-sm opacity-75"></i>
                             </x-slot>

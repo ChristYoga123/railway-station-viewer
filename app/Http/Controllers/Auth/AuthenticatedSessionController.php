@@ -38,9 +38,9 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if(Auth::user()->is_admin === 1){
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('train.dashboard');
     }
 
     /**
@@ -64,6 +64,6 @@ class AuthenticatedSessionController extends Controller
         if($is_admin){
             return redirect()->route('admin.login');
         }
-        return redirect()->route('admin-train.login');
+        return redirect()->route('train.login');
     }
 }

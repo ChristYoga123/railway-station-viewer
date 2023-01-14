@@ -30,9 +30,6 @@
             </div>
         </div>
     @endif
-</div>
-
-<div>
     @can('admin')
         @if ($statusUpdate)
             <div class="mb-8 ml-5 mt-6">
@@ -47,45 +44,49 @@
     <hr class="mb-5">
 
     <div class="mb-8 ml-5 mt-6">
-        <form>
-            <div class="flex justify-around gap-3">
-                <div class="form flex flex-col">
-                    <label for="search_station_start" class="text-xs font-semibold mb-3">Station Awal</label>
-                    <select wire:model="search_station_start"
-                            id="search_station_start"
-                            class="select select-primary w-full max-w-xs
-                            @error("search_station_start")
-                                select-error
-                            @enderror">
-                        <option value="">Pilih stasiun awal</option>
-                        @foreach ($stations as $station)
-                            <option value="{{ $station->id }}">{{ $station->name }}</option>
-                        @endforeach
-                    </select>
-                    {{-- * Show onClick={id} --}}
-                    <button class="btn btn-secondary mt-6">{{ $search_station_start }}</button>
-                </div>
-
-                <div class="form flex flex-col">
-                    <label for="search_station_end" class="text-xs font-semibold mb-3">Station Akhir</label>
-                    <select wire:model="search_station_end"
-                            id="search_station_end"
-                            class="select select-primary w-full max-w-xs
-                            @error("search_station_end")
-                                select-error
-                            @enderror">
-                        <option value="">Pilih stasiun akhir</option>
-                        @foreach ($stations as $station)
-                            <option value="{{ $station->id }}">{{ $station->name }}</option>
-                        @endforeach
-                    </select>
-                    {{-- * Show onClick={id} --}}
-                    <button class="btn btn-secondary mt-6">{{ $search_station_end }}</button>
-                </div>
-
-                <button class="btn btn-secondary mt-6">Cari</button>
+        <h1 class="text-center text-lg font-semibold">Cari Rute</h1>
+        <div class="flex justify-around gap-3">
+            <div class="form flex flex-col">
+                <label for="search_station_start" class="text-xs font-semibold mb-3">Station Awal</label>
+                <select wire:model="search_station_start"
+                        id="search_station_start"
+                        class="select select-primary w-full max-w-xs
+                        @error("search_station_start")
+                            select-error
+                        @enderror">
+                    <option value="">Pilih stasiun awal</option>
+                    @foreach ($stations as $station)
+                        <option value="{{ $station->id }}">{{ $station->name }}</option>
+                    @endforeach
+                </select>
             </div>
-        </form>
+
+            <div class="form flex flex-col">
+                <label for="search_station_end" class="text-xs font-semibold mb-3">Station Akhir</label>
+                <select wire:model="search_station_end"
+                        id="search_station_end"
+                        class="select select-primary w-full max-w-xs
+                        @error("search_station_end")
+                            select-error
+                        @enderror">
+                    <option value="">Pilih stasiun akhir</option>
+                    @foreach ($stations as $station)
+                        <option value="{{ $station->id }}">{{ $station->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        {{-- DESAINKAN INI BANG --}}
+        @if ($stationRoute)
+            <ul>
+                @foreach ($stationRoute as $item)
+                    {{ $item }}
+                @endforeach
+            </ul>
+        @endif
+        {{-- TOLONG PLIS AKOWOKAOKOKWKAW --}}
+        
     </div>
 
     <div class="block w-full overflow-x-auto rounded">

@@ -17,11 +17,11 @@ class isAdminTrain
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->is_admin == 0) {
+        if (Auth::check() && Auth::user()->is_admin == 0) {
             return $next($request);
         }
 
-        return redirect()->route('dashboard')->with('error','You have not this access');
+        return redirect()->route('train.login')->with('error','You have not this access');
 
     }
 }
